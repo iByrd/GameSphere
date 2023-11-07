@@ -56,3 +56,6 @@ button.accept-policy {
     display: inline-block;
 }
 
+.spacer {
+    height: 100vh;
+}
