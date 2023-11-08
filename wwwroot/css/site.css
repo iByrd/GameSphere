@@ -26,3 +26,11 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
+.spacer {
+    height: 100vh;
+}
+
+.explorerSpacer {
+    height: 320px;
+}

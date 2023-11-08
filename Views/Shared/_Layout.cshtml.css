@@ -47,15 +47,3 @@ button.accept-policy {
   line-height: 60px;
 }
 
-.dialogBox {
-    border-style: solid;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #F2F2F2;
-    position: relative;
-    display: inline-block;
-}
-
-.spacer {
-    height: 100vh;
-}

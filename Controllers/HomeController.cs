@@ -18,6 +18,16 @@ namespace GameSphere.Controllers
             return View();
         }
 
+        public IActionResult Camp()
+        {
+            return View();
+        }
+
+        public IActionResult People()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
