@@ -2,7 +2,51 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <!--<ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+
+                </ul>-->
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div style="position:relative">
+    <div style="display:none" class="explorerSpacer" id="explorerSpacer"></div>
+    <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
+    <img src="~/images/idlecaveexplorer.gif" id="idleCaveExplorer" />
+    <div class="text-light bg-dark" id="welcome-text" style="margin: 20px; padding: 10px;"></div>
 </div>
+
+
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn-success" style="display:none" id="q1yes">Yes</button>
+    <button class="btn-danger" style="display:none" id="q1no">No</button>
+</div>
+
+<div class="text-light bg-dark" id="welcome-text2" style="margin: 20px; padding: 10px; display:none"></div>
+
+<div class="spacer"></div>
+
+<div style="max-width: auto">
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1646168940&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-678175888" title="InfraredNotTaco" target="_blank" style="color: #cccccc; text-decoration: none;">InfraredNotTaco</a> · <a href="https://soundcloud.com/user-678175888/glass-desert" title="Glass Desert" target="_blank" style="color: #cccccc; text-decoration: none;">Glass Desert</a></div>
+</div>
+
+

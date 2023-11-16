@@ -18,5 +18,19 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('../images/pressstart.jpg');
+    min-height: 110vh;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.spacer {
+    height: 100vh;
+}
+
+.explorerSpacer {
+    height: 320px;
 }
