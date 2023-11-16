@@ -1,3 +1,7 @@
+using GameSphere.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace GameSphere
 {
     public class Program
@@ -8,6 +12,9 @@ namespace GameSphere
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<BountyContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("GameSphereData")));
 
             var app = builder.Build();
 
