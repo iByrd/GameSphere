@@ -1,5 +1,9 @@
-﻿using GameSphere.Models;
+﻿
+using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GameSphere.Models;
 
 namespace GameSphere.Controllers
 {
@@ -14,11 +18,14 @@ namespace GameSphere.Controllers
 
         public IActionResult List()
         {
-            List<Bounty> bounties = _context.Bounties.OrderBy(x => x.Name).ToList();
+            BountyViewModel bountyViewModel = new BountyViewModel();
 
-            var model = new BountyViewModel { Bounties = bounties };
+            IQueryable<Bounty> query = _context.Bounties
+                .Include(x => x.Difficulty).Include(x => x.Status);
 
-            return View(model);
+            bountyViewModel.Bounties = query.OrderBy(x => x.Id).ToList();
+
+            return View(bountyViewModel);
         }
     }
 }

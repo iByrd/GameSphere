@@ -7,11 +7,7 @@
     ViewBag.Title = "Bounty";
 }
 
-<style>
-    body {
-        background-image: none;
-    }
-</style>
+
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
@@ -24,10 +20,10 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
                     </li>
 
                 </ul>
@@ -36,30 +32,41 @@
     </nav>
 </header>
 
-<h1>Current Bounties</h1>
+<div style="background-color: slategray">
 
-<div class="col-sm-10">
+    <h1 class="mx-auto">Current Bounties</h1>
 
-    <a asp-action="Add"><b>Add new Bounty</b></a>
+    <div class="col-sm-10">
 
-    <table class="table table-bordered table-striped mt-2">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
+        <a asp-action="Add"><b class="btn btn-success">Add new Bounty</b></a>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Bounty bounty in Model.Bounties)
-            {
-
+        <table class="table table-bordered table-striped mt-2">
+            <thead>
                 <tr>
-                    <td>@bounty.Name</td>
-                    <td>@bounty.Description</td>
-                    
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Reward</th>
+                    <th>Difficulty</th>
+                    <th>Status</th>
+
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (Bounty bounty in Model.Bounties)
+                {
+
+                    <tr>
+                        <td>@bounty.Name</td>
+                        <td>@bounty.Description</td>
+                        <td>@bounty.Reward</td>
+                        <td>@bounty.Difficulty.Name</td>
+                        <td>@bounty.Status.Name</td>
+
+                    
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
 </div>
