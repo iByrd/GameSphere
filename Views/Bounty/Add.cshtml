@@ -1,0 +1,77 @@
+﻿
+
+@model BountyViewModel
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container" style="background-color:slategray">
+
+    <h2 class="page-header text-center">Add a New Bounty</h2>
+    <hr />
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form asp-action="Add" method="post">
+
+        <div class="form-group">
+            <label asp-for="NewBounty.Name">Name:</label>
+            <input type="text" asp-for="NewBounty.Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewBounty.Description">Description:</label>
+            <input type="text" asp-for="NewBounty.Description" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewBounty.Reward">Reward:</label>
+            <input type="number" asp-for="NewBounty.Reward" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewBounty.DifficultyId">Difficulty:</label>
+            <select asp-for="NewBounty.DifficultyId" class="form-control"
+                    asp-items="@(new SelectList(Model.Difficulties, "DifficultyId", "Name"))">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewBounty.StatusId">Status:</label>
+            <select asp-for="NewBounty.StatusId" class="form-control"
+                    asp-items="@(new SelectList(Model.Statuses, "StatusId", "Name"))">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <hr />
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a asp-action="List" class="btn btn-danger">Cancel</a>
+        </div>
+
+    </form>
+
+</div>

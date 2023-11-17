@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameSphere.Migrations
 {
     [DbContext(typeof(BountyContext))]
-    [Migration("20231117160024_initial")]
+    [Migration("20231117202533_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -58,17 +58,6 @@ namespace GameSphere.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Bounties");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Old man planning to take over the world!",
-                            DifficultyId = "average",
-                            Name = "Dr.Evil",
-                            Reward = 150m,
-                            StatusId = "pending"
-                        });
                 });
 
             modelBuilder.Entity("GameSphere.Models.Difficulty", b =>

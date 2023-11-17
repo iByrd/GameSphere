@@ -55,17 +55,6 @@ namespace GameSphere.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Bounties");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Old man planning to take over the world!",
-                            DifficultyId = "average",
-                            Name = "Dr.Evil",
-                            Reward = 150m,
-                            StatusId = "pending"
-                        });
                 });
 
             modelBuilder.Entity("GameSphere.Models.Difficulty", b =>

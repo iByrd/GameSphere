@@ -86,11 +86,6 @@ namespace GameSphere.Migrations
                     { "pending", "Pending" }
                 });
 
-            migrationBuilder.InsertData(
-                table: "Bounties",
-                columns: new[] { "Id", "Description", "DifficultyId", "Name", "Reward", "StatusId" },
-                values: new object[] { 1, "Old man planning to take over the world!", "average", "Dr.Evil", 150m, "pending" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Bounties_DifficultyId",
                 table: "Bounties",
