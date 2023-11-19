@@ -19,10 +19,10 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
                     </li>
 
                 </ul>
@@ -31,17 +31,43 @@
     </nav>
 </header>
 
+
+
 <div>
     <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
     <img src="~/images/idlecaveexplorer.gif" id="idleCaveExplorer" style="position:absolute; top: 450px"/>
 </div>
 
+<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px;">
+
+    <h1>Base Camp</h1>
+    <hr />
+
+    <div class="d-grid gap-2 d-md-block mx-auto">
+        <a asp-controller="Bounty" asp-action="List"><b class="btn btn-dark" style="margin: 20px;">Link to Mike's Contribution</b></a>
+
+        <a asp-controller="" asp-action=""><b class="btn btn-dark" style="margin: 20px;">Link to Logan's Contribution</b></a>
+
+        <a asp-controller="" asp-action=""><b class="btn btn-dark" style="margin: 20px;">Link to Conrad's Contribution</b></a>
+
+        <a asp-controller="" asp-action=""><b class="btn btn-dark" style="margin: 20px;">Link to Brayden's Contribution</b></a>
+    </div>
+
+    <hr />
+</div>
+
+<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px;">
+    <h3>Town Map</h3>
+    <hr />
+    <h5>Browse our Camp by clicking certain areas in the town photo below</h5>
+</div>
+
 <div>
     <!--This image is from Hearthstone by Blizzard and was sourced from https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ign.com%2Fvideos%2Fhearthstone-mercenaries-game-mode-gameplay-overview&psig=AOvVaw2jXDYJYPcPEn4ZFSSR6XwR&ust=1699542374855000&source=images&cd=vfe&opi=89978449&ved=0CBQQjhxqFwoTCKj1zbThtIIDFQAAAAAdAAAAABAE-->
-    <img src="~/images/mercenaryCamp.png" style="display:block; margin-left:auto; margin-right:auto;" usemap="#campmap"/>
+    <img src="~/images/mercenaryCamp.png" class="aliceInFrames" usemap="#campmap"/>
 
     <map name="campmap">
-        <area shape="rect" coords="536,306,689,403" href="../Home/People" />
+        <area shape="rect" coords="536,306,689,403" href="../Bounty/List" />
     </map>
 </div>
 

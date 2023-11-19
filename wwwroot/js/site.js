@@ -32,6 +32,10 @@ const textElement2 = document.getElementById("welcome-text2");
 
 const exploreImg = document.getElementById("idleCaveExplorer");
 
+document.getElementById("q1no").onclick = function () {
+    document.getElementById("gandalf").style.display = "block";
+}
+
 
 function changeExplorer() {
     exploreImg.src = "/images/walkingcaveexplorer.gif";
@@ -53,6 +57,13 @@ function typeText2(text, index = 0) {
 
         setTimeout(() => typeText2(text, index), 50);
     }
+    if (index >= text.length) {
+        document.getElementById("q2yes").style.display = "inline";
+    }
+}
+
+document.getElementById("q2yes").onclick = function () {
+    window.location.href = "/Home/Camp";
 }
 
 // -----------------------------------------------------------------------

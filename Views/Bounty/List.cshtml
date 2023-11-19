@@ -1,0 +1,100 @@
+﻿@model BountyViewModel
+@{
+    ViewBag.Title = "Bounty";
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container" style="background-color: slategray">
+
+    <hr />
+    <h1 class="page-header text-center">Current Bounties</h1>
+    <hr />
+
+    <div class="row">
+
+        <div class="d-grid col-2 mx-auto">
+            <a asp-action="Add"><b class="btn btn-success">Add new Bounty</b></a>
+        </div>
+
+        <div class="d-grid col-10 mx-auto">
+
+            <table class="table table-bordered table-striped table-dark mt-2" style="text-align: center;">
+
+                <thead>
+                    <tr>   
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reward</th>
+                        <th>Difficulty</th>
+                        <th>Status</th>
+                        <th>Change Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (Bounty bounty in Model.Bounties)
+                    {
+                        <tr>
+                            <td>@bounty.Name</td>
+                            <td>@bounty.Description</td>
+                            <td>@bounty.Reward</td>
+                            <td>@bounty.Difficulty.Name</td>
+                            <td>@bounty.Status.Name</td>
+                            <td style="display: flex; justify-content: center">
+                                <div class="d-grid gap-2 d-md-block">
+                                    <form asp-action="Edit" method="post">
+                                        <input type="hidden"
+                                               name="@nameof(Bounty.Id)" value="@bounty.Id" />
+
+                                        <button type="submit" class="btn btn-outline-success btn-sm"
+                                                name="@nameof(Bounty.StatusId)" value="closed">
+                                            Finished
+                                        </button>
+
+                                        <button type="submit" class="btn btn-outline-warning btn-sm"
+                                                name="@nameof(Bounty.StatusId)" value="pending">
+                                            Pending
+                                        </button>
+
+                                        <button type="submit" class="btn btn-outline-info btn-sm"
+                                                name="@nameof(Bounty.StatusId)" value="open">
+                                            Open
+                                        </button>
+
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
