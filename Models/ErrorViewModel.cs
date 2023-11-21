@@ -1,9 +1,7 @@
-namespace GameSphere.Models
-{
-    public class ErrorViewModel
-    {
-        public string? RequestId { get; set; }
+namespace GameSphere.Models;
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-    }
+public record ErrorViewModel(string RequestId, int? ErrorCode)
+{
+    public readonly bool ShowRequestId = !string.IsNullOrEmpty(RequestId);
 }
+

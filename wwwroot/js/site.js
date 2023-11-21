@@ -41,7 +41,7 @@ function changeExplorer() {
     exploreImg.src = "/images/walkingcaveexplorer.gif";
     exploreImg.style.position = "relative";
     exploreImg.style.left = "0";
-    
+
     textElement2.style.display = "block";
 };
 

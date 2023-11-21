@@ -1,46 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace GameSphere.Models
+namespace GameSphere.Models;
+
+public class BountyContext(DbContextOptions<BountyContext> options) : DbContext(options)
 {
-    public class BountyContext : DbContext
+    public DbSet<Bounty> Bounties { get; set; }
+
+    public void Initialize()
     {
-        public BountyContext(DbContextOptions<BountyContext> options) : base(options) { }
+        if (Bounties.Any())
+            return; // DB has been seeded
 
-        public DbSet<Bounty> Bounties { get; set; }
+        Bounties.Add(
+            new()
+            {
+                Name = "Dr. Evil",
+                Description = "Old man planning to take over the world!",
+                Reward = 150.00m,
+                Difficulty = BountyDifficulty.Average,
+                Status = BountyStatus.Pending
+            });
 
-        public DbSet<Difficulty> Difficulties { get; set; }
-
-        public DbSet<Status> Statuses { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Entity<Difficulty>().HasData(
-                new Difficulty { DifficultyId = "easy", Name = "Easy" },
-                new Difficulty { DifficultyId = "average", Name = "Average" },
-                new Difficulty { DifficultyId = "hard", Name = "Hard" },
-                new Difficulty { DifficultyId = "legendary", Name = "Legendary" }
-                );
-
-            modelBuilder.Entity<Status>().HasData(
-                new Status { StatusId = "open", Name = "Open" },
-                new Status { StatusId = "pending", Name = "Pending" },
-                new Status { StatusId = "closed", Name = "Completed" }
-            );
-
-            modelBuilder.Entity<Bounty>().HasData(
-                new Bounty
-                {
-                    Id = 1,
-                    Name = "Dr.Evil",
-                    Description = "Old man planning to take over the world!",
-                    Reward = (decimal)150.00,
-                    DifficultyId = "average",
-                    StatusId = "pending"
-                }
-                );
-
-          
-        }
+        SaveChanges();
     }
 }

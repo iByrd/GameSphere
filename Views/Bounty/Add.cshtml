@@ -1,13 +1,11 @@
-﻿
-
-@model BountyViewModel
+﻿@model Bounty
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -35,33 +33,29 @@
     <form asp-action="Add" method="post">
 
         <div class="form-group">
-            <label asp-for="NewBounty.Name">Name:</label>
-            <input type="text" asp-for="NewBounty.Name" class="form-control">
+            <label asp-for="Name">Name:</label>
+            <input type="text" asp-for="Name" class="form-control">
         </div>
 
         <div class="form-group">
-            <label asp-for="NewBounty.Description">Description:</label>
-            <input type="text" asp-for="NewBounty.Description" class="form-control">
+            <label asp-for="Description">Description:</label>
+            <input type="text" asp-for="Description" class="form-control">
         </div>
 
         <div class="form-group">
-            <label asp-for="NewBounty.Reward">Reward:</label>
-            <input type="number" asp-for="NewBounty.Reward" class="form-control">
+            <label asp-for="Reward">Reward:</label>
+            <input type="number" asp-for="Reward" class="form-control">
         </div>
 
         <div class="form-group">
-            <label asp-for="NewBounty.DifficultyId">Difficulty:</label>
-            <select asp-for="NewBounty.DifficultyId" class="form-control"
-                    asp-items="@(new SelectList(Model.Difficulties, "DifficultyId", "Name"))">
-                <option value=""></option>
+            <label asp-for="Difficulty">Difficulty:</label>
+            <select asp-for="Difficulty" class="form-control" asp-items="Html.GetEnumSelectList<BountyDifficulty>()">
             </select>
         </div>
 
         <div class="form-group">
-            <label asp-for="NewBounty.StatusId">Status:</label>
-            <select asp-for="NewBounty.StatusId" class="form-control"
-                    asp-items="@(new SelectList(Model.Statuses, "StatusId", "Name"))">
-                <option value=""></option>
+            <label asp-for="Status">Status:</label>
+            <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<BountyStatus>()">
             </select>
         </div>
 
