@@ -1,71 +1,60 @@
 ﻿@model Bounty
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
-                    </li>
+@{
+    ViewData["Title"] = "Add a new Bounty";
+}
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<div class="container my-4 text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
 
-<div class="container" style="background-color:slategray; max-width: 800px;">
-
-    <h2 class="page-header text-center">Add a New Bounty</h2>
     <hr />
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
 
     <form asp-action="Add" method="post">
-
         <div class="form-group">
             <label asp-for="Name">Name:</label>
             <input type="text" asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Description">Description:</label>
             <input type="text" asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Reward">Reward:</label>
             <input type="number" asp-for="Reward" class="form-control">
+            <span asp-validation-for="Reward" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Difficulty">Difficulty:</label>
-            <select asp-for="Difficulty" class="form-control" asp-items="Html.GetEnumSelectList<BountyDifficulty>()">
+            <select asp-for="Difficulty" class="form-control" asp-items="Html.GetEnumSelectList<DifficultyType>()">
             </select>
+            <span asp-validation-for="Difficulty" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Status">Status:</label>
-            <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<BountyStatus>()">
+            <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<StatusType>()">
             </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
         </div>
 
         <hr />
 
-        <div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom: 10px;">
-            <button type="submit" class="btn btn-success">Add</button>
-            <a asp-action="List" class="btn btn-danger">Cancel</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-flat col">Add</button>
+            <a asp-action="List" class="btn btn-flat danger col">Cancel</a>
         </div>
-
     </form>
-
 </div>
+
+
+@section Scripts
+{
+    <script type="module" vite-src="~/jquery.ts"></script>
+}

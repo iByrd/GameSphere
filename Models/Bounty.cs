@@ -20,8 +20,8 @@ public class Bounty
     public decimal Reward { get; set; }
 
     [Required(ErrorMessage = "Please select a difficulty.")]
-    public BountyDifficulty Difficulty { get; set; }
+    public DifficultyType Difficulty { get; set; }
 
     [Required(ErrorMessage = "Please determine a status.")]
-    public BountyStatus Status { get; set; }
+    public StatusType Status { get; set; }
 }

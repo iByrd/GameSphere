@@ -3,20 +3,16 @@
   ViewData["Title"] = (Model.ErrorCode is not null) ? $"Error {Model.ErrorCode}" : "Oh no!";
 }
 
-<h1 class="text-danger">@ViewData["Title"]</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-<header class="mb-4">
+<div class="container my-4 text-center">
   <h1 class="display-4">@ViewData["Title"]</h1>
-</header>
 
-<div class="mb-4">
-  <h2 class="text-danger mb-4">An error occurred while processing your request.</h2>
-  @if (Model.ShowRequestId)
-  {
-    <p>
-      <strong>Request ID:</strong> @Model.RequestId
-    </p>
-  }
+  <div>
+    <h2 class="text-danger mb-2">An error occurred while processing your request.</h2>
+    @if (Model.ShowRequestId)
+    {
+      <p>
+        <strong>Request ID:</strong> @Model.RequestId
+      </p>
+    }
+  </div>
 </div>
-

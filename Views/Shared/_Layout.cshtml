@@ -1,32 +1,43 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GameSphere</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/GameSphere.styles.css" asp-append-version="true" />
-</head>
-<body class="hero">
+<html lang="en" class="h-100">
 
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<partial name="_Head" />
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            <ul>
-                <li style="display:inline">&copy; 2023 - GameSphere - </li>
-            </ul>
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top border-bottom bg-body-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-5" asp-controller="Home" asp-action="Index">
+                    <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
+                    <img src="~/idlecaveexplorer.gif" width="48" height="32" />
+                    GameSphere
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Camp">Camp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Bounty" asp-action="List">Bounties</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <main class="flex-shrink-0 mb-4">
+        @RenderBody()
+    </main>
+
+    <partial name="_Footer" />
+
+    <script type="module" vite-src="~/main.ts"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

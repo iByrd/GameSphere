@@ -3,9 +3,9 @@ using GameSphere.Models;
 
 namespace GameSphere.Controllers;
 
-public class BountyController(BountyContext ctx) : Controller
+public class BountyController(GameSphereContext ctx) : Controller
 {
-    private readonly BountyContext context = ctx;
+    private readonly GameSphereContext context = ctx;
 
     public IActionResult List() => View(context.Bounties.OrderBy(x => x.Id).ToList());
 
@@ -21,22 +21,26 @@ public class BountyController(BountyContext ctx) : Controller
     [HttpPost]
     public IActionResult Add(Bounty newBounty)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid) {
+            context.Bounties.Add(newBounty);
+            context.SaveChanges();
+            return RedirectToAction("List");
+        } else {
+            ModelState.AddModelError(string.Empty, "Please correct all errors");
             return View(newBounty);
-
-        context.Bounties.Add(newBounty);
-        context.SaveChanges();
-        return RedirectToAction("List");
+        }
     }
 
-    [HttpPost]
-    public IActionResult Edit(Bounty bounty)
+    [HttpPut]
+    public void ChangeStatus(int bountyId, StatusType newStatus)
     {
-        if (!ModelState.IsValid)
-            return View(bounty);
+        var bounty = context.Bounties.Find(bountyId);
 
-        context.Bounties.Update(bounty);
-        context.SaveChanges();
-        return RedirectToAction("List");
+        bounty.Status = newStatus;
+
+        if (ModelState.IsValid) {
+            context.Bounties.Update(bounty);
+            context.SaveChanges();
+        }
     }
 }
