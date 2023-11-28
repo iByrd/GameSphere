@@ -5,7 +5,6 @@ namespace GameSphere.Models
 {
     public class Weapon
     {
-        [Key]
         public int WeaponId;
 
         [Required(ErrorMessage = "Please enter the weapon's name.")]
