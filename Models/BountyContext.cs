@@ -12,6 +12,8 @@ namespace GameSphere.Models
 
         public DbSet<Status> Statuses { get; set; }
 
+        public DbSet<Weapon> Weapons { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -37,6 +39,35 @@ namespace GameSphere.Models
                     Reward = (decimal)150.00,
                     DifficultyId = "average",
                     StatusId = "pending"
+                }
+                );
+
+            modelBuilder.Entity<Weapon>().HasData(
+                new Weapon 
+                { 
+                    WeaponId = 1,
+                    Name = "Longsword",
+                    Damage = 10,
+                    Weight = (decimal)3.0,
+                    Cost = (decimal)50.00
+                },
+
+                new Weapon
+                {
+                    WeaponId = 2,
+                    Name = "Spear",
+                    Damage = 15,
+                    Weight = (decimal)3.5,
+                    Cost = (decimal)100.00
+                },
+
+                new Weapon
+                {
+                    WeaponId = 3,
+                    Name = "Battle Axe",
+                    Damage = 20,
+                    Weight = (decimal)6.0,
+                    Cost = (decimal)150.00
                 }
                 );
 
