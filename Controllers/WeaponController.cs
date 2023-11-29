@@ -17,6 +17,27 @@ namespace GameSphere.Controllers
             return View(weaponViewModel);
         }
 
+        public IActionResult WeaponAdd()
+        {
+            WeaponViewModel weaponViewModel = new WeaponViewModel();
+            return View(weaponViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult WeaponAdd(WeaponViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Weapons.Add(model.NewWeapon);
+                context.SaveChanges();
+                return RedirectToAction("WeaponList");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
         [HttpPost]
         public IActionResult Delete(Weapon weapon)
         { 
