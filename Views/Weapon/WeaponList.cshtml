@@ -1,6 +1,6 @@
-﻿@model BountyViewModel
+﻿@model WeaponViewModel
 @{
-    ViewBag.Title = "Bounty";
+    ViewBag.Title = "WeaponShop";
 }
 
 <header>
@@ -32,13 +32,13 @@
 <div class="container" style="background-color: slategray">
 
     <hr />
-    <h1 class="page-header text-center">Current Bounties</h1>
+    <h1 class="page-header text-center">Available Weapons</h1>
     <hr />
 
     <div class="row">
 
         <div class="d-grid col-2 mx-auto">
-            <a asp-action="Add"><b class="btn btn-success">Add new Bounty</b></a>
+            <a asp-action="WeaponAdd"><b class="btn btn-success">Request New Weapon</b></a>
         </div>
 
         <div class="d-grid col-10 mx-auto">
@@ -46,48 +46,31 @@
             <table class="table table-bordered table-striped table-dark mt-2" style="text-align: center;">
 
                 <thead>
-                    <tr>   
+                    <tr>
+                        <th>Cost</th>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th>Reward</th>
-                        <th>Difficulty</th>
-                        <th>Status</th>
-                        <th>Change Status</th>
+                        <th>Damage</th>
+                        <th>Weight</th>
+                        <th>Purchase?</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach (Bounty bounty in Model.Bounties)
+                    @foreach (Weapon weapon in Model.Weapons)
                     {
                         <tr>
-                            <td>@bounty.Name</td>
-                            <td>@bounty.Description</td>
-                            <td>@bounty.Reward</td>
-                            <td>@bounty.Difficulty.Name</td>
-                            <td>@bounty.Status.Name</td>
+                            <td>@weapon.Cost</td>
+                            <td>@weapon.Name</td>
+                            <td>@weapon.Damage</td>
+                            <td>@weapon.Weight</td>
                             <td style="display: flex; justify-content: center">
                                 <div class="d-grid gap-2 d-md-block">
-                                    <form asp-action="Edit" method="post">
+                                    <form asp-action="Delete" method="post">
                                         <input type="hidden"
-                                               name="@nameof(Bounty.Id)" value="@bounty.Id" />
+                                               name="@nameof(Weapon.WeaponId)" value="@weapon.WeaponId" />
 
-                                        <button type="submit" class="btn btn-outline-success btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="closed">
-                                            Finished
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-warning btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="pending">
-                                            Pending
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-info btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="open">
-                                            Open
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                                            Delete
+                                        <button type="submit" class="btn btn-outline-success btn-sm">
+                                            Buy
                                         </button>
                                     </form>
                                 </div>

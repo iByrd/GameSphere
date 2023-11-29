@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameSphere.Migrations
 {
     [DbContext(typeof(BountyContext))]
-    [Migration("20231117202533_initial")]
-    partial class initial
+    [Migration("20231128155453_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,17 @@ namespace GameSphere.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Bounties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Old man planning to take over the world!",
+                            DifficultyId = "average",
+                            Name = "Dr.Evil",
+                            Reward = 150m,
+                            StatusId = "pending"
+                        });
                 });
 
             modelBuilder.Entity("GameSphere.Models.Difficulty", b =>
@@ -124,6 +135,58 @@ namespace GameSphere.Migrations
                         {
                             StatusId = "closed",
                             Name = "Completed"
+                        });
+                });
+
+            modelBuilder.Entity("GameSphere.Models.Weapon", b =>
+                {
+                    b.Property<int>("WeaponId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeaponId"));
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Damage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18,1)");
+
+                    b.HasKey("WeaponId");
+
+                    b.ToTable("Weapons");
+
+                    b.HasData(
+                        new
+                        {
+                            WeaponId = 1,
+                            Cost = 50m,
+                            Damage = 10,
+                            Name = "Longsword",
+                            Weight = 3m
+                        },
+                        new
+                        {
+                            WeaponId = 2,
+                            Cost = 100m,
+                            Damage = 15,
+                            Name = "Spear",
+                            Weight = 3.5m
+                        },
+                        new
+                        {
+                            WeaponId = 3,
+                            Cost = 150m,
+                            Damage = 20,
+                            Name = "Battle Axe",
+                            Weight = 6m
                         });
                 });
 
