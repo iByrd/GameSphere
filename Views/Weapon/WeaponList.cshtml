@@ -48,6 +48,7 @@
                         <th>Name</th>
                         <th>Damage</th>
                         <th>Weight</th>
+                        <th>Purchase?</th>
                     </tr>
                 </thead>
 
@@ -59,33 +60,18 @@
                             <td>@weapon.Name</td>
                             <td>@weapon.Damage</td>
                             <td>@weapon.Weight</td>
-                            @* <td style="display: flex; justify-content: center">
+                            <td style="display: flex; justify-content: center">
                                 <div class="d-grid gap-2 d-md-block">
-                                    <form asp-action="Edit" method="post">
+                                    <form asp-action="Delete" method="post">
                                         <input type="hidden"
-                                               name="@nameof(Bounty.Id)" value="@bounty.Id" />
+                                               name="@nameof(Weapon.WeaponId)" value="@weapon.WeaponId" />
 
-                                        <button type="submit" class="btn btn-outline-success btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="closed">
-                                            Finished
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-warning btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="pending">
-                                            Pending
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-info btn-sm"
-                                                name="@nameof(Bounty.StatusId)" value="open">
-                                            Open
-                                        </button>
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                                            Delete
+                                        <button type="submit" class="btn btn-outline-success btn-sm">
+                                            Buy
                                         </button>
                                     </form>
                                 </div>
-                            </td> *@
+                            </td>
                         </tr>
                     }
                 </tbody>
