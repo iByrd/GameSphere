@@ -23,6 +23,11 @@ namespace GameSphere.Controllers
             return View();
         }
 
+        public IActionResult ItemShop()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -5,20 +5,21 @@ namespace GameSphere.Models
 {
     public class Weapon
     {
-        public int WeaponId;
+        [Key]
+        public int WeaponId { get; set; }
 
         [Required(ErrorMessage = "Please enter the weapon's name.")]
-        public string Name;
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter the weapon's damage.")]
-        public int Damage;
+        public int Damage { get; set; }
 
         [Required(ErrorMessage = "Please enter the weapon's weight.")]
         [Column(TypeName = "decimal(18,1)")]
-        public decimal Weight;
+        public decimal Weight { get; set; }
 
         [Required(ErrorMessage = "Please enter the weapon's cost.")]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Cost;
+        public decimal Cost { get; set; }
     }
 }
