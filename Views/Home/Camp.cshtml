@@ -27,7 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,28 +43,28 @@
     <img src="~/images/idlecaveexplorer.gif" id="idleCaveExplorer" style="position:absolute; top: 450px"/>
 </div>
 
-<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px;">
+<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px; border-radius: 30px;">
 
-    <h1>Base Camp</h1>
+    <h1 style="text-align: center; padding-top: 5px;">Base Camp</h1>
     <hr />
-
-    <div class="d-grid gap-2 d-md-block mx-auto">
+    <div class="d-grid gap-2 d-md-block mx-auto" style="text-align: center">
         <a asp-controller="Bounty" asp-action="List"><b class="btn btn-dark" style="margin: 20px;">Link to Mike's Contribution</b></a>
 
         <a asp-controller="Weapon" asp-action="WeaponList"><b class="btn btn-dark" style="margin: 20px;">Link to Logan's Contribution</b></a>
 
         <a asp-controller="" asp-action=""><b class="btn btn-dark" style="margin: 20px;">Link to Conrad's Contribution</b></a>
 
-        <a asp-controller="" asp-action=""><b class="btn btn-dark" style="margin: 20px;">Link to Brayden's Contribution</b></a>
+        <a asp-controller="Home" asp-action="AboutUs"><b class="btn btn-dark" style="margin: 20px;">Link to Brayden's Contribution</b></a>
     </div>
 
     <hr />
 </div>
 
-<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px;">
-    <h3>Town Map</h3>
+<div class="container" style="display: block; justify-content: center; background-color: slategray; margin-bottom: 5px; border-radius: 30px;">
+    <h3 style="text-align: center; padding-top: 5px;">Town Map</h3>
     <hr />
-    <h5>Browse our Camp by clicking certain areas in the town photo below</h5>
+    <h5 style="text-align: center">Browse our Camp by clicking certain areas in the town photo below</h5>
+    <hr />
 </div>
 
 <div>
@@ -72,6 +74,7 @@
     <map name="campmap">
         <area shape="rect" coords="536,306,689,403" href="../Bounty/List" />
         <area shape="rect" coords="978,335,1205,529" href="../Weapon/WeaponList" />
+        <area shape="rect" coords="849,61,1146,254" href="../Home/AboutUs" />
     </map>
 </div>
 

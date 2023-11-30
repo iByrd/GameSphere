@@ -19,16 +19,18 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
-<div class="container" style="background-color:slategray; max-width: 800px;">
+<div class="container" style="background-color:slategray; max-width: 800px; border-radius: 30px;">
 
-    <h2 class="page-header text-center">Request a New Weapon</h2>
+    <h2 class="page-header text-center" style="padding-top: 10px">Request a New Weapon</h2>
     <hr />
 
     <div asp-validation-summary="All" class="text-danger"></div>
