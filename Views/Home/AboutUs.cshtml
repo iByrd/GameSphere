@@ -1,86 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Our Team";
 }
 
-<head>
-    <!--WHERE DOES THIS GO-->
-</head>
+<div class="container my-4">
 
+    <!--Section for group member info-->
+    <div class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+        <hr />
+        <h5>Our group name is GameSphere! For this final project, we wanted to base it on a hobby that we all had in common... VIDEO GAMES!</h5>
+    </div>
 
-<!--NAV Bar-->
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+    <!--Mikes Section-->
+    <section class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3 mx-4">
+        <h2 class="display-6">Mike Byrd</h2>
+        <hr />
+        <h5>Major: Information Technology</h5>
+        <h5>Track: Software Development</h5>
+        <h5>Year: 4th Year</h5>
+        <h5>Favorite video game: Diablo II</h5>
+    </section>
 
-<!--Section for group member info-->
-<div class="aboutHeader">
-    <h1 class="aboutHeadText">Our Team</h1>
-    <hr class="customHr" />
-    <h5 class="aboutText">Our group name is GameSphere! For this final project, we wanted to base it on a hobby that we all had in common... VIDEO GAMES!</h5>
-</div>
+    <!--Logans Section-->
+    <section class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3 mx-4">
+        <h2 class="display-6">Logan Conley</h2>
+        <hr />
+        <h5>Major: Information Technology</h5>
+        <h5>Track: Software Development</h5>
+        <h5>Year: 4th Year</h5>
+        <h5>Favorite video game: Bloodborne</h5>
+    </section>
 
-<!--Mikes Section-->
-<div class="aboutSection">
-    <h2 class="aboutHeadText">Mike Byrd</h2>
-    <hr class="customHr"/>
-    <h5 class="aboutText">Major: Information Technology</h5>
-    <h5 class="aboutText">Track: Software Development</h5>
-    <h5 class="aboutText">Year: 4th Year</h5>
-    <h5 class="aboutText">Favorite video game: Diablo II</h5>
-</div>
+    <!--Conrads Section-->
+    <section class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3 mx-4">
+        <h2 class="display-6">Conrad Hale</h2>
+        <hr />
+        <h5>Major: Information Technology</h5>
+        <h5>Track: Software Development</h5>
+        <h5>Year: 3rd Year</h5>
+        <h5>Favorite video game: Resident Evil 7</h5>
+    </section>
 
-<!--Logans Section-->
-<div class="aboutSection">
-    <h2 class="aboutHeadText">Logan Conley</h2>
-    <hr class="customHr" />
-    <h5 class="aboutText">Major: Information Technology</h5>
-    <h5 class="aboutText">Track: Software Development</h5>
-    <h5 class="aboutText">Year: 4th Year</h5>
-    <h5 class="aboutText">Favorite video game: Bloodborne</h5>
-</div>
+    <!--Braydens Section-->
+    <section class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3 mx-4">
+        <h2 class="display-6">Brayden Cummins</h2>
+        <hr />
+        <h5>Major: Information Technology</h5>
+        <h5>Track: Data Technology and Software Development</h5>
+        <h5>Year: 4th Year</h5>
+        <h5>Favorite video game: Rust</h5>
+    </section>
 
-<!--Conrads Section-->
-<div class="aboutSection">
-    <h2 class="aboutHeadText">Conrad Hale</h2>
-    <hr class="customHr" />
-    <h5 class="aboutText">Major: Information Technology</h5>
-    <h5 class="aboutText">Track: Software Development</h5>
-    <h5 class="aboutText">Year: 3rd Year</h5>
-    <h5 class="aboutText">Favorite video game: ???</h5>
-</div>
-
-<!--Braydens Section-->
-<div class="aboutSection">
-    <h2 class="aboutHeadText">Brayden Cummins</h2>
-    <hr class="customHr" />
-    <h5 class="aboutText">Major: Information Technology</h5>
-    <h5 class="aboutText">Track: Data Technology and Software Development</h5>
-    <h5 class="aboutText">Year: 4th Year</h5>
-    <h5 class="aboutText">Favorite video game: Rust</h5>
 </div>

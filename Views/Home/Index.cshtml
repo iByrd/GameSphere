@@ -1,65 +1,47 @@
 ﻿@{
+    Layout = null;
     ViewData["Title"] = "Home Page";
 }
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <!--<ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
-                    </li>
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
-                </ul>-->
+<partial name="_Head" />
+
+<body data-bs-theme="dark" class="d-flex flex-column h-100">
+    <a asp-controller="Home" asp-action="Camp" accesskey="s" class="visually-hidden">Skip Game</a>
+
+    <main class="flex-shrink-0">
+        <div class="container mb-3">
+            <div class="container center d-none mb-3" id="gandalf">
+                <video controls="controls" style="max-width: inherit">
+                    <source src="~/assets/gandalf.mp4" type="video/mp4">
+                    <a href="~/assets/gandalf.mp4">Gandalf's answer to no</a> (.MP4)
+                </video>
             </div>
+
+            <div class="mb-3">
+                <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
+                <img src="~/assets/walkingcaveexplorer.gif" id="walkingCaveExplorer" class="d-none" />
+                <img src="~/assets/idlecaveexplorer.gif" id="idleCaveExplorer" />
+            </div>
+
+            <div class="text-light bg-dark p-3 border rounded-1 mb-3" id="welcome-text"></div>
+
+            <div id="yes-or-no" class="d-none flex-row gap-2 mx-auto" role="group">
+                <button type="button" data-value="y" class="btn btn-success rounded-1 col">Yes</button>
+                <button type="button" data-value="n" class="btn btn-danger rounded-1 col">No</button>
+            </div>
+
+            <a role="button" asp-controller="Home" asp-action="Camp" class="btn btn-success rounded-1 d-none mb-3 w-100"
+               id="enter-btn">Enter</a>
         </div>
-    </nav>
-</header>
+    </main>
 
-<div class="container center" style="display: none;" id="gandalf">
-    <video controls="controls" style="max-width: inherit">
-        <source src="~/images/gandalf.mp4" type="video/mp4">
-        <a href="~/images/gandalf.mp4">Gandalf's answer to no</a> (.MP4)
-    </video>
-</div>
+    <partial name="_Footer" />
 
-<div style="position:relative">
-    <div style="display:none" class="explorerSpacer" id="explorerSpacer"></div>
-    <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
-    <img src="~/images/idlecaveexplorer.gif" id="idleCaveExplorer" />
-    <div class="text-light bg-dark" id="welcome-text" style="margin: 20px; padding: 10px;"></div>
-</div>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/game.js"></script>
+</body>
 
-
-
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn-success" style="display:none" id="q1yes">Yes</button>
-    <button class="btn-danger" style="display:none" id="q1no">No</button>
-</div>
-
-<div class="text-light bg-dark" id="welcome-text2" style="margin: 20px; padding: 10px; display:none"></div>
-
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn-success" style="display:none" id="q2yes">Enter</button>
-</div>
-
-<div class="spacer"></div>
-
-<div style="max-width: auto">
-<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1646168940&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-678175888" title="InfraredNotTaco" target="_blank" style="color: #cccccc; text-decoration: none;">InfraredNotTaco</a> · <a href="https://soundcloud.com/user-678175888/glass-desert" title="Glass Desert" target="_blank" style="color: #cccccc; text-decoration: none;">Glass Desert</a></div>
-</div>
-
-
+</html>

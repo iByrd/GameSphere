@@ -3,49 +3,36 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameSphere.Controllers
 {
-    public class WeaponController : Controller
+    public class WeaponController(GameSphereContext ctx) : Controller
     {
-        private BountyContext context;
-        public WeaponController(BountyContext ctx) => context = ctx;
-        public IActionResult WeaponList()
-        {
-            WeaponViewModel weaponViewModel = new WeaponViewModel();
+        private readonly GameSphereContext context = ctx;
 
-            IQueryable<Weapon> query = context.Weapons;
-            weaponViewModel.Weapons = query.OrderBy(x => x.WeaponId).ToList();
+        public IActionResult WeaponList() => View(context.Weapons.OrderBy(x => x.WeaponId).ToList());
 
-            return View(weaponViewModel);
-        }
-
-        public IActionResult WeaponAdd()
-        {
-            WeaponViewModel weaponViewModel = new WeaponViewModel();
-            return View(weaponViewModel);
-        }
+        public IActionResult WeaponAdd() => View(new Weapon());
 
         [HttpPost]
-        public IActionResult WeaponAdd(WeaponViewModel model)
+        public IActionResult WeaponAdd(Weapon newWeapon)
         {
             if (ModelState.IsValid)
             {
-                context.Weapons.Add(model.NewWeapon);
+                context.Weapons.Add(newWeapon);
                 context.SaveChanges();
                 return RedirectToAction("WeaponList");
             }
             else
             {
-                return View(model);
+                ModelState.AddModelError(string.Empty, "Please correct all errors");
+                return View(newWeapon);
             }
         }
 
         [HttpPost]
-        public IActionResult Delete(Weapon weapon)
-        { 
-            context.Weapons.Remove(weapon);
+        public IActionResult Delete(Weapon model)
+        {
+            context.Weapons.Remove(model);
             context.SaveChanges();
             return RedirectToAction("WeaponList");
         }
-
-
     }
 }

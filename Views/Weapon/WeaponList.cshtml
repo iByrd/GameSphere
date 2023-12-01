@@ -1,88 +1,47 @@
-﻿@model WeaponViewModel
+﻿@model List<Weapon>
 @{
-    ViewBag.Title = "WeaponShop";
+    ViewData["Title"] = "Weapon Shop";
 }
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameSphere</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camp">Camp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Bounty" asp-action="List">Bounties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="container" style="background-color: slategray; border-radius: 30px;">
-
-    <hr />
-    <h1 class="page-header text-center">Available Weapons</h1>
+<div class="container my-4 text-center rounded-4 px-4 py-3 bg-body-secondary border">
+    <h2>Available Weapons</h2>
     <hr />
 
-    <div class="row">
+    <a role="button" class="btn btn-success fw-semibold my-3" asp-action="WeaponAdd">Request New Weapon</a>
 
-        <div class="d-grid col-2 mx-auto">
-            <a asp-action="WeaponAdd"><b class="btn btn-success">Request New Weapon</b></a>
-        </div>
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>Cost</th>
+                    <th>Name</th>
+                    <th>Damage</th>
+                    <th>Weight</th>
+                    <th>Purchase?</th>
+                </tr>
+            </thead>
 
-        <div class="d-grid col-10 mx-auto">
-
-            <table class="table table-bordered table-striped table-dark mt-2" style="text-align: center;">
-
-                <thead>
+            <tbody>
+                @foreach (Weapon weapon in Model)
+                {
                     <tr>
-                        <th>Cost</th>
-                        <th>Name</th>
-                        <th>Damage</th>
-                        <th>Weight</th>
-                        <th>Purchase?</th>
+                        <td>@weapon.Cost</td>
+                        <td>@weapon.Name</td>
+                        <td>@weapon.Damage</td>
+                        <td>@weapon.Weight</td>
+                        <td>
+                            <form asp-action="Delete" method="post">
+                                <input type="hidden"
+                                       name="@nameof(Weapon.WeaponId)" value="@weapon.WeaponId" />
+
+                                <button type="submit" class="btn btn-outline-success btn-sm">
+                                    Buy
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (Weapon weapon in Model.Weapons)
-                    {
-                        <tr>
-                            <td>@weapon.Cost</td>
-                            <td>@weapon.Name</td>
-                            <td>@weapon.Damage</td>
-                            <td>@weapon.Weight</td>
-                            <td style="display: flex; justify-content: center">
-                                <div class="d-grid gap-2 d-md-block">
-                                    <form asp-action="Delete" method="post">
-                                        <input type="hidden"
-                                               name="@nameof(Weapon.WeaponId)" value="@weapon.WeaponId" />
-
-                                        <button type="submit" class="btn btn-outline-success btn-sm">
-                                            Buy
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-
+                }
+            </tbody>
+        </table>
     </div>
-
 </div>
