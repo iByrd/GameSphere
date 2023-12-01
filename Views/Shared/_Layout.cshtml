@@ -1,32 +1,49 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GameSphere</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/GameSphere.styles.css" asp-append-version="true" />
-</head>
-<body class="hero">
-    
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<html lang="en" class="h-100">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            <ul>
-                <li style="display:inline">&copy; 2023 - GameSphere - </li>
-            </ul>
+<partial name="_Head" />
 
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<body data-bs-theme="dark" class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-md sticky-top border-bottom bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-5" asp-controller="Home" asp-action="Index">
+                    <!--Credit for this image goes to Samuel Lee, source https://samuellee.itch.io/cave-explorer-animated-pixel-art-->
+                    <img src="~/assets/idlecaveexplorer.gif" width="48" height="32" />
+                    GameSphere
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Camp">Camp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Bounty" asp-action="List">Bounties</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Weapon" asp-action="WeaponList">Weapon Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0 mb-4">
+        @RenderBody()
+    </main>
+
+    <partial name="_Footer" />
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

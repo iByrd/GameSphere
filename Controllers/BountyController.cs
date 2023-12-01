@@ -1,89 +1,51 @@
-﻿
-using System;
-using System.Linq;
+﻿using GameSphere.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using GameSphere.Models;
 
-namespace GameSphere.Controllers
+namespace GameSphere.Controllers;
+
+public class BountyController(GameSphereContext ctx) : Controller
 {
-    public class BountyController : Controller
+    private readonly GameSphereContext context = ctx;
+
+    public IActionResult List() => View(context.Bounties.OrderBy(x => x.Id).ToList());
+
+    public IActionResult Add() => View(new Bounty());
+
+    [HttpDelete]
+    public void Delete(int bountyId)
     {
-        private BountyContext context;
+        var bounty = context.Bounties.Find(bountyId);
+        context.Bounties.Remove(bounty);
+        context.SaveChanges();
+    }
 
-        public BountyController(BountyContext ctx) => context = ctx; 
-
-        public IActionResult List()
+    [HttpPost]
+    public IActionResult Add(Bounty newBounty)
+    {
+        if (ModelState.IsValid)
         {
-            BountyViewModel bountyViewModel = new BountyViewModel();
-
-            bountyViewModel.Difficulties = context.Difficulties.ToList();
-            bountyViewModel.Statuses = context.Statuses.ToList();
-
-            IQueryable<Bounty> query = context.Bounties
-                .Include(x => x.Difficulty).Include(x => x.Status);
-
-            bountyViewModel.Bounties = query.OrderBy(x => x.Id).ToList();
-
-            return View(bountyViewModel);
-        }
-
-        public IActionResult Add()
-        {
-            BountyViewModel bountyViewModel = new BountyViewModel();
-            bountyViewModel.Difficulties = context.Difficulties.ToList();
-            bountyViewModel.Statuses = context.Statuses.ToList();
-            return View(bountyViewModel);
-        }
-
-        [HttpPost]
-        public IActionResult Add(BountyViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Bounties.Add(model.NewBounty);
-                context.SaveChanges();
-                return RedirectToAction("List");
-            }
-            else
-            {
-                model.Difficulties = context.Difficulties.ToList();
-                model.Statuses = context.Statuses.ToList();
-                return View(model);
-            }
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Bounty modifiedBounty)
-        {
-            if (modifiedBounty.StatusId == "closed")
-            {
-                modifiedBounty = context.Bounties.Find(keyValues: modifiedBounty.Id) 
-                    ?? throw new ArgumentNullException { };
-                modifiedBounty.StatusId = "closed";
-                context.Bounties.Update(modifiedBounty);
-            }
-            else if (modifiedBounty.StatusId == "pending")
-            {
-                modifiedBounty = context.Bounties.Find(keyValues: modifiedBounty.Id)
-                    ?? throw new ArgumentNullException { };
-                modifiedBounty.StatusId = "pending";
-                context.Bounties.Update(modifiedBounty);
-            }
-            else if (modifiedBounty.StatusId == "open")
-            {
-                modifiedBounty = context.Bounties.Find(keyValues: modifiedBounty.Id)
-                    ?? throw new ArgumentNullException { };
-                modifiedBounty.StatusId = "open";
-                context.Bounties.Update(modifiedBounty);
-            }
-            else
-            {
-                context.Bounties.Remove(modifiedBounty);
-            }
+            context.Bounties.Add(newBounty);
             context.SaveChanges();
-
             return RedirectToAction("List");
+        }
+        else
+        {
+            ModelState.AddModelError(string.Empty, "Please correct all errors");
+            return View(newBounty);
+        }
+    }
+
+    [HttpPut]
+    public void ChangeStatus(int bountyId, StatusType newStatus)
+    {
+        var bounty = context.Bounties.Find(bountyId);
+
+        bounty.Status = newStatus;
+
+        if (ModelState.IsValid)
+        {
+            context.Bounties.Update(bounty);
+            context.SaveChanges();
         }
     }
 }

@@ -1,47 +1,9 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-    margin-bottom: 60px;
-    background-image: url('../images/pressstart.jpg');
-    min-height: 110vh;
+    background-image: url('../assets/PressStart.jpg');
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
     background-attachment: fixed;
-}
-
-.spacer {
-    height: 100vh;
-}
-
-.explorerSpacer {
-    height: 320px;
-}
-
-.aliceInFrames {
-    display: block;
-    border: solid;
-    border-width: thick;
-    border-color: aliceblue;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .aboutHeader {
