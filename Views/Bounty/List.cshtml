@@ -4,7 +4,7 @@
 }
 
 <div class="container my-4 text-center rounded-4 px-4 py-3 bg-body-secondary border">
-    <h2 class="page-header">@ViewData["Title"]</h2>
+    <h2>@ViewData["Title"]</h2>
     <hr />
 
     <a role="button" class="btn btn-success fw-semibold my-3" asp-action="Add">Add new Bounty</a>
@@ -33,17 +33,17 @@
                         <td>@bounty.Status.ToString()</td>
                         <td>
                             <div class="d-grid gap-2 d-md-block">
-                                <button type="button" class="btn btn-outline-primary btn-sm change-status"
-                                        data-url="@Url.Action("ChangeStatus", "Bounty", new { bountyId = bounty.Id, newStatus = StatusType.Open })">
-                                    Open
-                                </button>
-                                <button type="button" class="btn btn-outline-info btn-sm change-status"
-                                        data-url="@Url.Action("ChangeStatus", "Bounty", new { bountyId = bounty.Id, newStatus = StatusType.Pending })">
-                                    Pending
-                                </button>
                                 <button type="button" class="btn btn-outline-success btn-sm change-status"
                                         data-url="@Url.Action("ChangeStatus", "Bounty", new { bountyId = bounty.Id, newStatus = StatusType.Completed })">
                                     Completed
+                                </button>
+                                <button type="button" class="btn btn-outline-warning btn-sm change-status"
+                                        data-url="@Url.Action("ChangeStatus", "Bounty", new { bountyId = bounty.Id, newStatus = StatusType.Pending })">
+                                    Pending
+                                </button>
+                                <button type="button" class="btn btn-outline-primary btn-sm change-status"
+                                        data-url="@Url.Action("ChangeStatus", "Bounty", new { bountyId = bounty.Id, newStatus = StatusType.Open })">
+                                    Open
                                 </button>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#confirm-delete-modal" data-label="@bounty.Name"

@@ -80,4 +80,3 @@ async function main() {
     });
 }
 setTimeout(main, 100);
-//# sourceMappingURL=game.js.map

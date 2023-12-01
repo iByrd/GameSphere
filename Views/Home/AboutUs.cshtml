@@ -1,8 +1,12 @@
-﻿<div class="container my-4">
+﻿@{
+    ViewData["Title"] = "Our Team";
+}
+
+<div class="container my-4">
 
     <!--Section for group member info-->
     <div class="rounded-4 mb-4 bg-body-secondary border text-center px-4 py-3">
-        <h1 class="display-4">Our Team</h1>
+        <h1 class="display-4">@ViewData["Title"]</h1>
         <hr />
         <h5>Our group name is GameSphere! For this final project, we wanted to base it on a hobby that we all had in common... VIDEO GAMES!</h5>
     </div>

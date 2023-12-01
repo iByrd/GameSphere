@@ -26,4 +26,3 @@ document
         return;
     button.addEventListener('click', () => httpMethodCall(url, 'PUT'));
 });
-//# sourceMappingURL=bounty_actions.js.map
